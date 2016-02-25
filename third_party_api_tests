@@ -1,0 +1,1 @@
+curl http://dev.markitondemand.com/MODApis/Api/v2/Quote/ --include --request GET --header "Content-Type: application/json"

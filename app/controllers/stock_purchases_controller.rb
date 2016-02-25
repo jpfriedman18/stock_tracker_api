@@ -1,0 +1,2 @@
+class StockPurchasesController < ProtectedController
+end
