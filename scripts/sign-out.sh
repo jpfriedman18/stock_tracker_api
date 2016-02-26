@@ -1,6 +1,6 @@
 #!/bin/bash
-TOKEN='17f1b3866ed963114be1397b82908f93'
-ID='3'
+TOKEN='18ed2198ba55b52600b8e90db8850918'
+ID='2'
 
 curl http://localhost:3000/sign-out/${ID} \
   --include \

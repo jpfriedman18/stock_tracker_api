@@ -1,5 +1,5 @@
 #change to ProtectedController
-class StockPurchasesController < ApplicationController
+class StockPurchasesController < ProtectedController
   before_action :set_stock_purchase, only: [:show, :destroy]
 
   # POST /stock_purchases

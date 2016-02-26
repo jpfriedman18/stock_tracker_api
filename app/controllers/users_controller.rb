@@ -1,5 +1,5 @@
 #change to ProtectedController
-class UsersController < ApplicationController
+class UsersController < ProtectedController
   skip_before_action :authenticate, only: [:signup, :signin]
 
   # POST '/sign-up'
@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   # DELETE '/sign-out/1'
   def signout
+    binding.pry
     if current_user == User.find(params[:id])
       current_user.logout
       head :no_content
