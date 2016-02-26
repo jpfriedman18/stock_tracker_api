@@ -1,8 +1,8 @@
 #change to ProtectedController
 class StockPurchasesController < ProtectedController
-  before_action :set_stock_purchase, only: [:show, :destroy]
+  before_action :set_stock_purchase, only: [:show, :update, :destroy]
 
-  # POST /stock_purchases
+  # POST /stock_purchases *working
   def create
     @stock_purchase = current_user.stock_purchases.new(stock_purchase_params)
 
@@ -25,7 +25,7 @@ class StockPurchasesController < ProtectedController
     render json: @stock_purchase
   end
 
-  # PATCH /stock_purchases/:id
+  # PATCH /stock_purchases/:id *working
   def update
     if @stock_purchase.update(stock_purchase_params)
       render json: @stock_purchase, status: :ok
@@ -34,7 +34,7 @@ class StockPurchasesController < ProtectedController
     end
   end
 
-  # DELETE /stock_purchases/:id
+  # DELETE /stock_purchases/:id *working
   def destroy
     @stock_purchase.destroy
     head :no_content
