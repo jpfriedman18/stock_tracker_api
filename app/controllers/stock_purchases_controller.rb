@@ -1,6 +1,6 @@
 #change to ProtectedController
 class StockPurchasesController < ApplicationController
-  before_action :set_stock_purchase, only: [:show, :delete]
+  before_action :set_stock_purchase, only: [:show, :destroy]
 
   # POST /stock_purchases
   def create
@@ -35,7 +35,7 @@ class StockPurchasesController < ApplicationController
   end
 
   # DELETE /stock_purchases/:id
-  def delete
+  def destroy
     @stock_purchase.destroy
     head :no_content
   end
