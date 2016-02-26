@@ -20,7 +20,7 @@ class StockPurchasesController < ProtectedController
     render json: @stock_purchases
   end
 
-   # GET /stock_purchases/:id
+   # GET /stock_purchases/:id *working
   def show
     render json: @stock_purchase
   end
