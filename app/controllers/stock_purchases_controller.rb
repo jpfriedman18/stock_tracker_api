@@ -4,7 +4,7 @@ class StockPurchasesController < ProtectedController
 
   # POST /stock_purchases
   def create
-    @stock_purchase = StockPurchase.new(stock_purchase_params)
+    @stock_purchase = current_user.stock_purchases.new(stock_purchase_params)
 
     if @stock_purchase.save
       render json: @stock_purchase, status: :created, location: @stock_purchase
