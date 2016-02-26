@@ -1,6 +1,6 @@
-class StockPurchasesController < ProtectedController
+#change to ProtectedController
+class StockPurchasesController < ApplicationController
   before_action :set_stock_purchase, only: [:show, :delete]
-  before_action :set_user, only: [:index, :create]
 
   # POST /stock_purchases
   def create
@@ -15,7 +15,7 @@ class StockPurchasesController < ProtectedController
 
   #GET /stock_purchases
   def index
-    @stock_purchases = @user.comments
+    @stock_purchases = current_user.stock_purchases
 
     render json: @stock_purchases
   end
@@ -23,6 +23,15 @@ class StockPurchasesController < ProtectedController
    # GET /stock_purchases/:id
   def show
     render json: @stock_purchase
+  end
+
+  # PATCH /stock_purchases/:id
+  def update
+    if @stock_purchase.update(stock_purchase_params)
+      render json: @stock_purchase, status: :ok
+    else
+      render json: @stock_purchase.errors, status: :unprocessable_entity
+    end
   end
 
   # DELETE /stock_purchases/:id
@@ -33,11 +42,7 @@ class StockPurchasesController < ProtectedController
 
   private
     def set_stock_purchase
-      @stock_purchase = StockPurchase.find(params[:id])
-    end
-
-    def set_user
-      @user = User.find(params[:user_id])
+      @stock_purchase = current_user.stock_purchases.find(params[:id])
     end
 
     def stock_purchase_params
