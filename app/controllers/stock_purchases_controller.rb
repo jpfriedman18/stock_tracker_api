@@ -1,5 +1,6 @@
 class StockPurchasesController < ProtectedController
   before_action :set_stock_purchase, only: [:show, :delete]
+  before_action :set_user, only: [:index, :create]
 
   # POST /stock_purchases
   def create
@@ -10,6 +11,13 @@ class StockPurchasesController < ProtectedController
     else
       render json: @stock_purchase.errors, status: :unprocessable_entity
     end
+  end
+
+  #GET /stock_purchases
+  def index
+    @stock_purchases = @user.comments
+
+    render json: @stock_purchases
   end
 
    # GET /stock_purchases/:id
@@ -26,6 +34,10 @@ class StockPurchasesController < ProtectedController
   private
     def set_stock_purchase
       @stock_purchase = StockPurchase.find(params[:id])
+    end
+
+    def set_user
+      @user = User.find(params[:user_id])
     end
 
     def stock_purchase_params
