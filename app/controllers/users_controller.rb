@@ -2,7 +2,7 @@
 class UsersController < ProtectedController
   skip_before_action :authenticate, only: [:signup, :signin]
 
-  # POST '/sign-up'
+  # POST '/sign-up' *working
   def signup
     user = User.create(user_creds)
     if user.valid?
@@ -12,7 +12,7 @@ class UsersController < ProtectedController
     end
   end
 
-  # POST '/sign-in'
+  # POST '/sign-in' *working
   def signin
     creds = user_creds
     if (user = User.authenticate creds[:email],
@@ -23,7 +23,7 @@ class UsersController < ProtectedController
     end
   end
 
-  # DELETE '/sign-out/1'
+  # DELETE '/sign-out/1' *working
   def signout
     binding.pry
     if current_user == User.find(params[:id])
