@@ -7,6 +7,7 @@ gem 'active_model_serializers'
 gem 'rack-cors', require: 'rack/cors'
 gem 'pg'
 gem 'bcrypt', '~> 3.1.7'
+gem 'httparty'
 
 group :production do
   gem 'rails_12factor', '~> 0.0.3'

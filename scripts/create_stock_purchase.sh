@@ -5,7 +5,7 @@ curl --include --request POST http://localhost:3000/stock_purchases \
 --header "Authorization: Token token=${TOKEN}" \
 --header "Content-Type: application/json" \
 --data '{
-  "stock_purchases": {
+  "stock_purchase": {
     "ticker": "NLY",
     "purchase_price": 10,
     "shares_purchased": 100

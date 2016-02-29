@@ -46,6 +46,6 @@ class StockPurchasesController < ProtectedController
     end
 
     def stock_purchase_params
-      params.require(:stock_purchases).permit(:ticker, :purchase_price, :shares_purchased, :user_id)
+      params.require(:stock_purchase).permit(:ticker, :name, :purchase_price, :shares_purchased, :user_id)
     end
 end

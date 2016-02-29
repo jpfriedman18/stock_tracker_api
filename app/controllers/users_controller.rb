@@ -25,7 +25,6 @@ class UsersController < ProtectedController
 
   # DELETE '/sign-out/1' *working
   def signout
-    binding.pry
     if current_user == User.find(params[:id])
       current_user.logout
       head :no_content
