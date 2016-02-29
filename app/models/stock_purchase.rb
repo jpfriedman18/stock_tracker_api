@@ -9,4 +9,9 @@ class StockPurchase < ActiveRecord::Base
       errors.add(:ticker, "not a valid ticker symbol")
     end
   end
+
+  def get_name
+    response = HTTParty.get('http://dev.markitondemand.com/Api/v2/Quote/json', {query: { symbol: ticker }})
+    JSON.parse(response.body)['Name']
+  end
 end

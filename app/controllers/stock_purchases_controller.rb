@@ -7,6 +7,8 @@ class StockPurchasesController < ProtectedController
     @stock_purchase = current_user.stock_purchases.new(stock_purchase_params)
 
     if @stock_purchase.save
+      @stock_purchase['name'] = @stock_purchase.get_name
+      @stock_purchase.save
       render json: @stock_purchase, status: :created, location: @stock_purchase
     else
       render json: @stock_purchase.errors, status: :unprocessable_entity
