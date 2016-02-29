@@ -19,9 +19,9 @@ class StockPurchasesController < ProtectedController
   def index
     @stock_purchases = current_user.stock_purchases
     @stock_purchases.each{ |stock|
-      response = HTTParty.get('http://dev.markitondemand.com/Api/v2/Quote/json', {query: { symbol: stock['ticker'] }})
-      current = JSON.parse(response.body)['LastPrice']
-      stock['current_price'] = current
+      # response = stock.get_current_data
+      # current = stock.get_current_price
+      stock['current_price'] = stock.get_current_price
     }
 
     render json: @stock_purchases

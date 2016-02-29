@@ -8,6 +8,7 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'pg'
 gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
+gem 'yahoo-finance'
 
 group :production do
   gem 'rails_12factor', '~> 0.0.3'

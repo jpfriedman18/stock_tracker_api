@@ -14,4 +14,14 @@ class StockPurchase < ActiveRecord::Base
     response = HTTParty.get('http://dev.markitondemand.com/Api/v2/Quote/json', {query: { symbol: ticker }})
     JSON.parse(response.body)['Name']
   end
+
+  def get_current_price
+    yahoo_client = YahooFinance::Client.new
+    data = yahoo_client.quotes([ticker], [:last_trade_price], { raw:false })
+    data[0].last_trade_price.to_f
+    # response = HTTParty.get('http://dev.markitondemand.com/Api/v2/Quote/jsonp', {query: { symbol: ticker }})
+    # response.chop!
+    # response.sub!("(function () { })(", "")
+    # response
+  end
 end
