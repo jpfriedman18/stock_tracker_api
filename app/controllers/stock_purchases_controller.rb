@@ -19,8 +19,6 @@ class StockPurchasesController < ProtectedController
   def index
     @stock_purchases = current_user.stock_purchases
     @stock_purchases.each{ |stock|
-      # response = stock.get_current_data
-      # current = stock.get_current_price
       stock['current_price'] = stock.get_current_price
     }
 
