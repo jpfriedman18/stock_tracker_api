@@ -3,6 +3,8 @@ class StockPurchase < ActiveRecord::Base
 
   validate :is_valid_ticker_symbol, on: :create
   validates :purchase_price, numericality: { only_integer: false }
+  validates :shares_purchased, numericality: { only_integer: true }
+  validates :purchase_price, :shares_purchased, :ticker, presence: true
 
   def is_valid_ticker_symbol
     response = HTTParty.get('http://dev.markitondemand.com/Api/v2/Quote/json', {query: { symbol: ticker }})
