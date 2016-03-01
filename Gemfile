@@ -9,7 +9,6 @@ gem 'pg'
 gem 'bcrypt', '~> 3.1.7'
 gem 'httparty'
 gem 'yahoo-finance'
-gem 'dotenv-rails'
 
 group :production do
   gem 'rails_12factor', '~> 0.0.3'
@@ -19,6 +18,7 @@ group :development, :test do
   gem 'pry', '~> 0.10'
   gem 'byebug', '~> 8.0'
   gem 'pry-byebug', '~> 3.3.0'
+  gem 'dotenv-rails'
 end
 
 group :development do
