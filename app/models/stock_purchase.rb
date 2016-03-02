@@ -14,8 +14,9 @@ class StockPurchase < ActiveRecord::Base
   end
 
   def get_name
-    response = HTTParty.get('http://dev.markitondemand.com/Api/v2/Quote/json', {query: { symbol: ticker }})
-    JSON.parse(response.body)['Name']
+    yahoo_client = YahooFinance::Client.new
+    data = yahoo_client.quotes([ticker],[:name], {raw:false} )
+    data[0].name
   end
 
   def get_current_price
